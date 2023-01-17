@@ -29,25 +29,25 @@ export default function BowlersTable(props) {
       <table className="border-collapse w-full">
         <thead className="text-center text-white bg-gray-900">
           <tr>
-            <th className="p-3">Bowler</th>
-            <th className="p-3">O</th>
-            <th className="p-3">M</th>
-            <th className="p-3">R</th>
-            <th className="p-3">W</th>
-            <th className="p-3">ECO</th>
-            <th >Add Balls</th>
+            <th className="px-1 py-3">Bowler</th>
+            <th className="px-1 py-3">O</th>
+            <th className="px-1 py-3">M</th>
+            <th className="px-1 py-3">R</th>
+            <th className="px-1 py-3">W</th>
+            <th className="py-3">ECO</th>
+            <th className="p-0">Add Balls</th>
           </tr>
         </thead>
         <tbody className="text-center bg-gray-500 font-semibold">
           {data.map((batter, index) => (
             <tr key={index}>
-              <td className="p-3">{batter.batter}</td>
-              <td className="p-3">{batter.O.toFixed(1)}</td>
-              <td className="p-3">{batter.M}</td>
-              <td className="p-3">{batter.R}</td>
-              <td className="p-3">{batter.W}</td>
-              <td className="p-3">{batter.ECO}</td>
-              <td >
+              <td className="px-1 py-3">{batter.batter}</td>
+              <td className="px-1 py-3">{batter.O.toFixed(1)}</td>
+              <td className="px-1 py-3">{batter.M}</td>
+              <td className="px-1 py-3">{batter.R}</td>
+              <td className="px-1 py-3">{batter.W}</td>
+              <td className="py-3">{batter.ECO}</td>
+              <td className="p-0">
                 <form onSubmit={(event) => handleAddBalls(index, event)}>
                 <input
                     className="sm:w-6 md:w-16 border-gray-400 text-black rounded-md"
@@ -67,14 +67,14 @@ export default function BowlersTable(props) {
                   />
                   <button
                     type="submit"
-                    className="bg-gray-900 text-white sm:w-4 md:w-5 rounded-sm"
+                    className="bg-gray-900 text-white w-5 rounded-sm"
                   >
                     +
                   </button>
                   <button
                     type="button"
                     onClick={() => handleWickets(index)}
-                    className="bg-gray-900 text-white sm:w-4 md:w-5 rounded-sm"
+                    className="bg-gray-900 text-white w-5 rounded-sm"
                   >
                     W
                   </button>
