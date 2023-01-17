@@ -65,7 +65,7 @@ export default function TeamModal(props) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center animate-players-appear ">
-      <div className="md:w-[600px] mt-32 border-1 rounded-xl h-[600px] bg-gray-200 sm:w-[95%]">
+      <div className="md:w-[600px] mt-32 border-1 rounded-xl sm:h-[470px] md:h-[600px] bg-gray-200 sm:w-[95%]">
         <div className="bg-slate-500 p-5 w-full border-1 border-slate-500 rounded-t-xl">
           <h1 className="text-center text-xl text-stone-900 tracking-wider font-bold">
             Select a team Players 😁
@@ -75,7 +75,7 @@ export default function TeamModal(props) {
           <div className="bg-cyan-900 text-center py-3">
             <h1 className="tracking-wider">{teamName}</h1>
           </div>
-          <div className="flex flex-col items-center flex-wrap h-[470px] ">
+          <div className="flex flex-row items-center justify-center flex-wrap sm:h-[350px] md:h-[470px] sm:overflow-y-scroll ">
             <input
               ref={player1Ref}
               className="text-black md:w-64 px-5 py-3 m-3 border-2 border-gray-300 rounded-full sm:w-[170px] "
