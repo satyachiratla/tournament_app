@@ -18,9 +18,9 @@ module.exports = (phase) => {
 
   return {
     env: {
-      allTeams: "http://vivekstournament/api/teams",
-      allMatches: "http://vivekstournament/api/matches",
-      allPlayers: "http://vivekstournament/api/teams/teamplayers",
+      allTeams: "http://vivekstournament.vercel.app/api/teams",
+      allMatches: "http://vivekstournament.vercel.app/api/matches",
+      allPlayers: "http://vivekstournament.vercel.app/api/teams/teamplayers",
       mongodb_username: "vivekchowdary",
       mongodb_password: "vivek77",
       mongodb_cluster: "cluster0",
