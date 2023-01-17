@@ -67,14 +67,14 @@ export default function BowlersTable(props) {
                   />
                   <button
                     type="submit"
-                    className="bg-gray-900 text-white w-5 rounded-sm"
+                    className="bg-gray-900 text-white sm:w-4 md:w-5 rounded-sm"
                   >
                     +
                   </button>
                   <button
                     type="button"
                     onClick={() => handleWickets(index)}
-                    className="bg-gray-900 text-white w-5 rounded-sm"
+                    className="bg-gray-900 text-white sm:w-4 md:w-5 rounded-sm"
                   >
                     W
                   </button>
