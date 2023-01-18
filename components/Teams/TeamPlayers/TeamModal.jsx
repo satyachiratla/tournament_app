@@ -60,7 +60,7 @@ export default function TeamModal(props) {
       .then((res) => res.json())
       .then((data) => console.log(data));
 
-      router.push('/')
+      router.push('/matches')
   }
 
   return (
