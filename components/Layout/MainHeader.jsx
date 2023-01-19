@@ -11,11 +11,11 @@ export default function MainHeader() {
   }
 
   return (
-    <header className="text-white bg-black tracking-wider h-20 w-screen top-0 flex items-center justify-between border-b border-gray-900 fixed">
-      <div className="text-2xl md:ml-24 sm:ml-8 font-extrabold text-cyan-500">
+    <header className="text-white bg-black tracking-wider h-20 w-screen top-0 flex items-center justify-around border-b border-gray-900 fixed">
+      <div className="text-2xl font-extrabold text-cyan-500">
         <Link href="/">Tournaments</Link>
       </div>
-      <div className="md:hidden sm:ml-32">
+      <div className="md:hidden sm:ml-16">
         <button
           id="menu-btn"
           type="button"
@@ -70,8 +70,8 @@ export default function MainHeader() {
         </div>
       )}
       <nav>
-        <ul className="md:flex mr-24 font-bold sm:hidden">
-          <li className={`mr-10`}>
+        <ul className="md:flex font-bold sm:hidden">
+          <li className="mr-10">
             <Link
               className={`hover:text-gray-300 ${
                 router.pathname == "/newteam"
