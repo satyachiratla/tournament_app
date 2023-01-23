@@ -1,4 +1,3 @@
-import { ObjectId } from "mongodb";
 import { connectDatabase } from "../../../helpers/db-util";
 
 export default async function handler(req, res) {
@@ -16,7 +15,7 @@ export default async function handler(req, res) {
         const { matchid } = req.query
         try {
           const db = client.db();
-          const result = await db.collection("matches").deleteOne({_id: ObjectId(matchid)})
+          const result = await db.collection("matches").deleteOne({ id: matchid })
           res.status(200).json({ message: "Deleting Success!" })
           client.close();
           return result;

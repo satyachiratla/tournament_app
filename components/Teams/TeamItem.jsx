@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import TeamModal from "./TeamPlayers/TeamModal";
 
 export default function TeamItem(props) {
-  const { id, name } = props;
+  const { id, name, onDelete } = props;
 
   const [showModal, setShowModal] = useState(false);
 
@@ -15,21 +15,30 @@ export default function TeamItem(props) {
   }
 
   async function deleteTeamHandler(teamid) {
-    const response = await fetch(`/api/teams/${teamid}`, {
+    await fetch(`/api/teams/${teamid}`, {
       method: "DELETE",
-    })
-    const data = await response.json();
-    console.log(data)
+    });
+    onDelete(id);
   }
 
   return (
     <Fragment>
       <li className="bg-slate-500 flex flex-col items-center border-1 rounded-xl md:w-72 py-3 md:mx-16 mb-16 sm:mb-8 sm:w-[80%] sm:mx-2">
-        <h3 className="text-lg text-white tracking-wider font-semibold">{name}</h3>
+        <h3 className="text-lg text-white tracking-wider font-semibold">
+          {name}
+        </h3>
         <div>
-          <button className="bg-slate-600 hover:bg-slate-700 border-1 rounded-lg py-1 px-2 mt-3" onClick={showModalHandler}>Create a Team</button>
+          <button
+            className="bg-slate-600 hover:bg-slate-700 border-1 rounded-lg py-1 px-2 mt-3"
+            onClick={showModalHandler}
+          >
+            Create a Team
+          </button>
         </div>
-        <button onClick={deleteTeamHandler.bind(null, id)} className="mt-2 hover:bg-black">
+        <button
+          onClick={deleteTeamHandler.bind(null, id)}
+          className="mt-2 hover:bg-black"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 20 20"

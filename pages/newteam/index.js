@@ -1,7 +1,7 @@
 import Teams from "../../components/Teams/Teams";
 import Head from 'next/head';
 
-export default function NewTeam(props) {
+export default function NewTeam() {
 
   return (
     <div>

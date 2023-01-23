@@ -14,14 +14,19 @@ export default async function handler(req, res) {
     const { teamName } = req.body;
 
     if (!teamName || teamName.trim().length === 0) {
-      res.status(500).json({ message: "Invalid name!" })
+      res.status(500).json({ message: "Invalid name!" });
       return;
     }
 
     try {
       const db = client.db();
-      const result = await db.collection("teams").insertOne({ name: teamName });
-      res.status(201).json({ message: "Added team", team: teamName });
+      const result = await db
+        .collection("teams")
+        .insertOne({
+          id: Math.floor(Math.random() * 999).toString(),
+          name: teamName,
+        });
+      res.status(201).json({ message: "Added team", name: teamName });
       client.close();
       return result;
     } catch (err) {
@@ -36,7 +41,7 @@ export default async function handler(req, res) {
       res
         .status(200)
         .json({ message: "Fetching teams success!", teams: result });
-        client.close()
+      client.close();
       return result;
     } catch (err) {
       res.status(500).json({ message: "Fetching teams failed!" });

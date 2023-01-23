@@ -13,22 +13,23 @@ export default async function handler(req, res) {
   if (req.method === "POST") {
     const { team1, team2 } = req.body;
 
-    const match = `${team1} vs ${team2}`
+    const match = `${team1} vs ${team2}`;
 
     const opponents = {
+      id: Math.floor(Math.random() * 999).toString(),
       match,
       team1,
       team2,
     };
 
     try {
-        const db = client.db();
-        const result = await db.collection("matches").insertOne(opponents);
-        res.status(200).json({ message: "Added Match!", match: opponents });
-        client.close();
-        return result;
+      const db = client.db();
+      const result = await db.collection("matches").insertOne(opponents);
+      res.status(200).json({ message: "Added Match!", match: opponents });
+      client.close();
+      return result;
     } catch (err) {
-        res.status(500).json({ message: "Failed to add match!" })
+      res.status(500).json({ message: "Failed to add match!" });
     }
   }
 

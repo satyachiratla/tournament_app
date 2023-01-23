@@ -7,6 +7,27 @@ export default function Teams(props) {
 
   const nameRef = useRef();
 
+  async function submitHandler(e) {
+    e.preventDefault();
+
+    const enteredTeamName = nameRef.current.value.replace(/ /g, "-");
+    const body = { teamName: enteredTeamName };
+
+    const response = await fetch("/api/teams", {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    setTeams([
+      ...teams,
+      { id: Math.floor(Math.random() * 999), name: data.name },
+    ]);
+    nameRef.current.value = "";
+  }
+
   useEffect(() => {
     setIsLoading(true);
     fetch("/api/teams")
@@ -17,23 +38,9 @@ export default function Teams(props) {
       });
   }, []);
 
-  function submitHandler(e) {
-    e.preventDefault();
-
-    const enteredTeamName = nameRef.current.value.replace(/ /g,"-");
-    console.log(enteredTeamName);
-    const body = { teamName: enteredTeamName };
-
-    fetch("/api/teams", {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-    nameRef.current.value = "";
+  function deleteTeamById(teamid) {
+    const updatedTeams = teams.filter((team) => team.id !== teamid);
+    setTeams(updatedTeams);
   }
 
   return (
@@ -60,7 +67,7 @@ export default function Teams(props) {
           </button>
         </form>
       </div>
-      {!isLoading && <TeamList teams={teams} />}
+      {!isLoading && <TeamList teams={teams} onDeleteTeam={deleteTeamById} />}
       {isLoading && (
         <p className="bg-cyan-500 text-center w-32 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">
           Loading...

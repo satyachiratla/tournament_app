@@ -11,8 +11,10 @@ export default function BowlersTable(props) {
     const balls = Number(event.target.addBalls.value);
     updatedData[index].O += balls / 6;
     // if(balls % 6 === 0) updatedData[index].M += 1;
-    updatedData[index].R += Number(event.target.addRuns.value)
-    updatedData[index].ECO = (updatedData[index].R / updatedData[index].O).toFixed(2)
+    updatedData[index].R += Number(event.target.addRuns.value);
+    updatedData[index].ECO = (
+      updatedData[index].R / updatedData[index].O
+    ).toFixed(2);
     setData(updatedData);
     event.target.addBalls.value = "";
     event.target.addRuns.value = "";
@@ -22,7 +24,7 @@ export default function BowlersTable(props) {
     const newData = [...data];
     newData[index].W += 1;
     setData(newData);
-};
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -49,7 +51,7 @@ export default function BowlersTable(props) {
               <td className="py-3">{batter.ECO}</td>
               <td className="p-0">
                 <form onSubmit={(event) => handleAddBalls(index, event)}>
-                <input
+                  <input
                     className="sm:w-6 md:w-16 border-gray-400 text-black rounded-md"
                     type="number"
                     name="addRuns"

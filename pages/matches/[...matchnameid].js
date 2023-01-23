@@ -1,20 +1,34 @@
 import Batters from "../../components/ScoreBoard/Batters";
-import Bowlers from '../../components/ScoreBoard/Bowlers'
-import { getPlayersByTeamName, getAllMatches } from "../../helpers/api-util";
-import Head from 'next/head';
+import Bowlers from "../../components/ScoreBoard/Bowlers";
+import { getPlayersByTeamName } from "../../helpers/api-util";
+import Head from "next/head";
 
 export default function LivePage(props) {
-
   const { batters, bowlers, team1, team2 } = props.teams;
 
   return (
     <div className="mt-24 flex md:flex-row sm:flex-col ">
       <Head>
-        <title>{team1} vs {team2}</title>
-        <meta name="description" content="App brings you all cricbuzz features that set up your local tournament match results..." />
+        <title>
+          {team1} vs {team2}
+        </title>
+        <meta
+          name="description"
+          content="App brings you all cricbuzz features that set up your local tournament match results..."
+        />
       </Head>
-      <Batters batters={batters} bowlers={bowlers} team1={team1} team2={team2} />
-      <Bowlers batters={batters} bowlers={bowlers} team1={team1} team2={team2} />
+      <Batters
+        batters={batters}
+        bowlers={bowlers}
+        team1={team1}
+        team2={team2}
+      />
+      <Bowlers
+        batters={batters}
+        bowlers={bowlers}
+        team1={team1}
+        team2={team2}
+      />
     </div>
   );
 }
@@ -30,11 +44,11 @@ export async function getServerSideProps(context) {
   const bowlers = await getPlayersByTeamName(team2);
 
   if (!batters || !bowlers) {
-    return { notFound: true }
+    return { notFound: true };
   }
 
-  const team1Name = batters.name.replace(/-/g, ' ');
-  const team2Name = bowlers.name.replace(/-/g, ' ');
+  const team1Name = batters.name.replace(/-/g, " ");
+  const team2Name = bowlers.name.replace(/-/g, " ");
 
   return {
     props: {
@@ -42,7 +56,7 @@ export async function getServerSideProps(context) {
         team1: team1Name,
         team2: team2Name,
         batters: batters.teamData,
-        bowlers: bowlers.teamData
+        bowlers: bowlers.teamData,
       },
     },
   };

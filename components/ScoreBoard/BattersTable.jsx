@@ -8,29 +8,32 @@ export default function BattersTable(props) {
   const handleAddRuns = (index, event) => {
     event.preventDefault();
     const updatedData = [...data];
-    const runs = Number(event.target.addRuns.value);
+    let runs = Number(event.target.addRuns.value);
     if (!runs) return;
     updatedData[index].r += runs;
-    (updatedData[index].b += 1);
+    let balls = (updatedData[index].b += 1);
     updatedData[index].SR = (
       (updatedData[index].r / updatedData[index].b) *
       100
     ).toFixed(2);
-  
-    if (runs === 4) updatedData[index][4] += 1;
-    if (runs === 6) updatedData[index][6] += 1;
+    let strikeRate = updatedData[index].SR;
+    let fours;
+    let sixes;
 
-    // const body = { r: runs, b: balls, fours, sixes, sr: strikeRate };
+    if (runs === 4) fours = updatedData[index][4] += 1;
+    if (runs === 6) sixes = updatedData[index][6] += 1;
 
-    // fetch(`/api/teams/teamplayers/${index}`, {
-    //   method: "PUT",
-    //   body: JSON.stringify(body),
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data));
+    const body = { r: runs, b: balls, fours, sixes, sr: strikeRate };
+
+    fetch(`/api/teams/teamplayers/${index}`, {
+      method: "PATCH",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
 
     setData(updatedData);
     event.target.addRuns.value = "";
