@@ -10,6 +10,10 @@ export default function Teams(props) {
   async function submitHandler(e) {
     e.preventDefault();
 
+    if (!nameRef.current.value) {
+      return;
+    }
+
     const enteredTeamName = nameRef.current.value.replace(/ /g, "-");
     const body = { teamName: enteredTeamName };
 
