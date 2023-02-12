@@ -1,14 +1,20 @@
 import { useState } from "react";
+// import { useDispatch } from "react-redux";
+// import { batterActions } from "../../store/batterSlice";
 
-export default function BattersTable(props) {
-  const { players } = props;
+export default function BattersTable({ players }) {
+  console.log(players)
 
   const [data, setData] = useState(players);
+  // const dispatch = useDispatch();
+
+  dispatch(batterActions.replaceBatters({ batters: players }))
 
   const handleAddRuns = (index, event) => {
     event.preventDefault();
     const updatedData = [...data];
     let runs = Number(event.target.addRuns.value);
+    dispatch(batterActions.scorecardHandler({ id: players[index], runs }))
     if (!runs) return;
     updatedData[index].r += runs;
     let balls = (updatedData[index].b += 1);
@@ -54,7 +60,7 @@ export default function BattersTable(props) {
           </tr>
         </thead>
         <tbody className="p-2 text-center bg-gray-500 font-semibold">
-          {data.map((batter, index) => (
+          {players.map((batter, index) => (
             <tr key={index}>
               <td className="p-3">{batter.batter}</td>
               <td className="p-3">{batter.r}</td>

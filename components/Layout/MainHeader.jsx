@@ -15,7 +15,7 @@ export default function MainHeader() {
       <div className="text-2xl font-extrabold text-cyan-500">
         <Link href="/">Tournaments</Link>
       </div>
-      <div className="md:hidden sm:ml-16">
+      <div className="md:hidden sm:ml-36">
         <button
           id="menu-btn"
           type="button"
