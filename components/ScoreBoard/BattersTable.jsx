@@ -3,12 +3,12 @@ import { useState } from "react";
 // import { batterActions } from "../../store/batterSlice";
 
 export default function BattersTable({ players }) {
-  console.log(players)
+  // console.log(players)
 
   const [data, setData] = useState(players);
   // const dispatch = useDispatch();
 
-  dispatch(batterActions.replaceBatters({ batters: players }))
+  // dispatch(batterActions.replaceBatters({ batters: players }))
 
   const handleAddRuns = (index, event) => {
     event.preventDefault();
