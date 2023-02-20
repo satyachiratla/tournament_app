@@ -1,9 +1,12 @@
 import TeamList from "../../components/Teams/TeamList";
 import { useState, useRef, useEffect } from "react";
+import Skeleton from "../Layout/Skeleton";
 
-export default function Teams(props) {
+export default function Teams() {
   const [teams, setTeams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  console.log(teams)
 
   const nameRef = useRef();
 
@@ -73,9 +76,10 @@ export default function Teams(props) {
       </div>
       {!isLoading && <TeamList teams={teams} onDeleteTeam={deleteTeamById} />}
       {isLoading && (
-        <p className="bg-cyan-500 text-center w-32 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">
-          Loading...
-        </p>
+        // <p className="bg-cyan-500 text-center w-32 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">
+        //   Loading...
+        // </p>
+        [1,2].map(n => <Skeleton key={n} />)
       )}
       {!isLoading && teams.length === 0 && (
         <p className="bg-cyan-500 text-center w-64 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">

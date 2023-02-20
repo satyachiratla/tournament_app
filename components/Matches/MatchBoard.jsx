@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import Skeleton from "../Layout/Skeleton";
 import MatchList from "./MatchList";
 
 export default function MatchBoard(props) {
@@ -131,9 +132,10 @@ export default function MatchBoard(props) {
         <MatchList matches={matches} onDeleteMatch={deleteMatchById} />
       )}
       {isLoading && (
-        <p className="bg-cyan-500 text-center w-32 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">
-          Loading...
-        </p>
+        // <p className="bg-cyan-500 text-center w-32 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">
+        //   Loading...
+        // </p>
+        [1,2].map(n => <Skeleton key={n} />)
       )}
       {!isLoading && matches.length === 0 && (
         <p className="bg-cyan-500 text-center w-64 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">
