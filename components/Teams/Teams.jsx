@@ -74,8 +74,8 @@ export default function Teams() {
           </button>
         </form>
       </div>
-      {!isLoading && <TeamList teams={teams} onDeleteTeam={deleteTeamById} />}
-      {isLoading && (
+      {isLoading && <TeamList teams={teams} onDeleteTeam={deleteTeamById} />}
+      {!isLoading && (
         // <p className="bg-cyan-500 text-center w-32 mt-16 px-3 py-3 border-sm border-cyan-800 rounded-md m-auto">
         //   Loading...
         // </p>
