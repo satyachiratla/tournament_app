@@ -85,7 +85,8 @@ export default function MatchBoard(props) {
               ref={team1ref}
               className="text-black w-72 mt-3 tracking-wider outline-none px-8 py-3 border-1 border-gray-400 rounded-md shadow-md shadow-gray-300/50"
             >
-              {teams.map((team) => {
+              {isLoading && <option className="text-black">Loading...</option>}
+              {!isLoading && teams.map((team) => {
                 return (
                   <option key={team._id} value={team.name}>
                     {team.name.replace(/-/g, " ")}
@@ -109,7 +110,8 @@ export default function MatchBoard(props) {
               ref={team2ref}
               className="text-black w-72 mt-3 tracking-wider outline-none px-8 py-3 border-1 border-gray-400 rounded-md shadow-md shadow-gray-300/50"
             >
-              {teams.map((team) => {
+              {isLoading && <option className="text-black">Loading...</option>}
+              {!isLoading && teams.map((team) => {
                 return (
                   <option key={team._id} value={team.name}>
                     {team.name.replace(/-/g, " ")}
