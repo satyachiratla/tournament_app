@@ -1,10 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import batterSlice from "./batterSlice";
+// import { configureStore } from "@reduxjs/toolkit";
+// import batterSlice from "./batterSlice";
 
-const store = configureStore({
-    reducer: {
-        batters: batterSlice.reducer
-    }
-})
+// const store = configureStore({
+//     reducer: {
+//         batters: batterSlice.reducer
+//     }
+// })
 
-export default store;
+// export default store;
