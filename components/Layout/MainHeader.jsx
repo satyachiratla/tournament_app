@@ -32,7 +32,7 @@ export default function MainHeader() {
       {toggle && (
         <div
           id="menu"
-          className="md:hidden absolute top-0 left-0 bottom-0 flex flex-col self-end w-full transition animate-navbar-appear h-[40vh] py-1 pt-40 pl-12 space-y-3 text-lg text-white bg-black"
+          className="md:hidden absolute top-0 left-0 bottom-0 flex flex-col self-end w-full transition animate-navbar-appear h-[30vh] py-1 pt-16 pl-12 space-y-3 text-lg text-white bg-black"
         >
           <Link
             onClick={toggleHandler}

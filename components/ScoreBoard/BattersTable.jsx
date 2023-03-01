@@ -14,7 +14,7 @@ export default function BattersTable({ players }) {
     event.preventDefault();
     const updatedData = [...data];
     let runs = Number(event.target.addRuns.value);
-    dispatch(batterActions.scorecardHandler({ id: players[index], runs }))
+    // dispatch(batterActions.scorecardHandler({ id: players[index], runs }))
     if (!runs) return;
     updatedData[index].r += runs;
     let balls = (updatedData[index].b += 1);

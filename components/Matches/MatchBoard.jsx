@@ -2,7 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import Skeleton from "../Layout/Skeleton";
 import MatchList from "./MatchList";
 
-export default function MatchBoard(props) {
+export default function MatchBoard() {
   const [teams, setTeams] = useState([]);
   const [matches, setMatches] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

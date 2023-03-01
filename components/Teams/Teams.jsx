@@ -6,8 +6,6 @@ export default function Teams() {
   const [teams, setTeams] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log(teams)
-
   const nameRef = useRef();
 
   async function submitHandler(e) {
@@ -37,13 +35,14 @@ export default function Teams() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch("/api/teams")
+    fetch('/api/teams')
       .then((res) => res.json())
       .then((data) => {
         setTeams(data.teams);
         setIsLoading(false);
       });
   }, []);
+
 
   function deleteTeamById(teamid) {
     const updatedTeams = teams.filter((team) => team.id !== teamid);
